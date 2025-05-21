@@ -4,7 +4,7 @@ This project is a computer vision-based project that enables you to control YouT
 
 ---
 
-## 🖥️ Features
+##  Features
 
  Gesture-based control using your webcam  
  Adjust system volume by thumb and index finger and set with pinky finger (Left hand)  
@@ -16,7 +16,7 @@ This project is a computer vision-based project that enables you to control YouT
 
 ---
 
-## 📂 Project Structure
+##  Project Structure
 
 ```bash
 .
