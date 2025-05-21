@@ -92,6 +92,7 @@ def command_youtube(lst, img):
                     return current_speed
 
             if hand == 'Left':
+                #Volume Control
                 if index_finger_up and thumb_up and not (middle_finger_up or ring_finger_up or pinky_finger_up):
                     frameWidth, frameHeight = img.shape[1], img.shape[0]
                     x1 = int(lm[4].x * frameWidth)
@@ -110,12 +111,12 @@ def command_youtube(lst, img):
                     cv2.rectangle(img, (50, 150), (85, 400), (0, 255, 0), 3)
                     cv2.rectangle(img, (50, int(volBar)), (85, 400), (0, 255, 0), cv2.FILLED)
                     cv2.putText(img, f'{int(volPer)}%', (40, 450), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 0, 0), 3)
-
+                    #Set Volume
                     if pinky_finger_up:
                         gesture_cooldown = True
                         cooldown_start_time = current_time
                     
-
+                #Forward 5 seconds
                 elif thumb_up and not (index_finger_up or middle_finger_up or ring_finger_up or pinky_finger_up):
                     pyautogui.press(forward_key)
                     cv2.putText(img, f'Seeking forward {seek_time} seconds', (40, 100), cv2.FONT_HERSHEY_SIMPLEX, 1,(255, 0, 0), 3)
@@ -124,6 +125,7 @@ def command_youtube(lst, img):
                     
 
             if hand == 'Right':
+                #Speed up 
                 if index_finger_up and not (middle_finger_up or ring_finger_up or pinky_finger_up or thumb_up):
                     pyautogui.hotkey('shift', SPEED_UP_KEY)
                     current_speed += 0.25
@@ -132,7 +134,7 @@ def command_youtube(lst, img):
                     gesture_cooldown = True
                     cooldown_start_time = current_time
                     
-
+                #Slow Down
                 elif pinky_finger_up and not (index_finger_up or middle_finger_up or ring_finger_up or thumb_up):
                     pyautogui.hotkey('shift', SLOW_DOWN_KEY)
                     current_speed -= 0.25
@@ -141,7 +143,7 @@ def command_youtube(lst, img):
                     gesture_cooldown = True
                     cooldown_start_time = current_time
                     
-
+                #Play/Pause
                 elif index_finger_up and middle_finger_up and ring_finger_up and pinky_finger_up and not thumb_up:
                     if current_time - cooldown_start_time >= cooldown_duration:
                         pyautogui.press(PLAY_PAUSE_KEY)
@@ -150,7 +152,7 @@ def command_youtube(lst, img):
                         gesture_cooldown = True
                         cooldown_start_time = current_time
                     
-
+                #Backward 5 seconds
                 elif thumb_up and not (index_finger_up or middle_finger_up or ring_finger_up or pinky_finger_up):
                     pyautogui.press(backward_key)
                     cv2.putText(img, f'Seeking Backward {seek_time} seconds', (40, 100), cv2.FONT_HERSHEY_SIMPLEX,
