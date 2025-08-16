@@ -22,3 +22,4 @@ This project is a computer vision-based project that enables you to control YouT
 .
 ├── main.py               # Main script for webcam and gesture capture
 ├── gesture_fnc.py        # Core logic for interpreting hand gestures
+helllllooooooooooo
